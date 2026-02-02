@@ -44,3 +44,4 @@ bin/
 
 ### Project
 run-*/
+node_modules/

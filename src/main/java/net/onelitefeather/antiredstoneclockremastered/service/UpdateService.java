@@ -9,6 +9,7 @@ import net.kyori.adventure.text.logger.slf4j.ComponentLogger;
 import net.onelitefeather.antiredstoneclockremastered.AntiRedstoneClockRemastered;
 import net.onelitefeather.antiredstoneclockremastered.service.api.SchedulerService;
 import net.onelitefeather.antiredstoneclockremastered.utils.Constants;
+import net.thecavern.extentions.antiredstoneclockremastered.NotifyHook;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Nullable;
@@ -73,7 +74,11 @@ public final class UpdateService implements Runnable {
 
     public void notifyPlayer(Player player) {
         if (this.remoteVersion != null && this.remoteVersion.isHigherThan(this.localVersion)) {
-            notifyPlayer(this.localVersion, this.remoteVersion, player);
+            // Cavern Listener Hook
+            if (NotifyHook.announceUpdate(player)) {
+                // Normal Notify
+                notifyPlayer(this.localVersion, this.remoteVersion, player);
+            }
         }
     }
 

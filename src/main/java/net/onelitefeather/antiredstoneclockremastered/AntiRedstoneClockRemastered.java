@@ -18,6 +18,7 @@ import net.onelitefeather.antiredstoneclockremastered.injection.TranslationModul
 import net.onelitefeather.antiredstoneclockremastered.service.UpdateService;
 import net.onelitefeather.antiredstoneclockremastered.service.tracking.ConfigMode;
 import net.onelitefeather.antiredstoneclockremastered.utils.CheckTPS;
+import net.thecavern.extentions.antiredstoneclockremastered.ListenerHook;
 import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -62,6 +63,9 @@ public final class AntiRedstoneClockRemastered extends JavaPlugin {
         injector.getInstance(CommandFrameworkModule.class).enable();
         injector.getInstance(MetricsModule.class).registerCharts();
         this.injector.getInstance(ListenerModule.class).registerEvents(injector, this);
+
+        // Cavern Listener Hook
+        getServer().getPluginManager().registerEvents(new ListenerHook(), this);
     }
     @Override
     public void onDisable() {
