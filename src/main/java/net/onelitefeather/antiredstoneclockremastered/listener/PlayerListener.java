@@ -54,6 +54,7 @@ public final class PlayerListener implements Listener {
         var hasKey = block.hasMetadata(Constants.META_KEY_ARCR_SIGN);
         if (hasKey) {
             blockBreakEvent.setDropItems(false);
+            blockBreakEvent.getBlock().removeMetadata(Constants.META_KEY_ARCR_SIGN, AntiRedstoneClockRemastered.getProvidingPlugin(AntiRedstoneClockRemastered.class));
         }
     }
 }
